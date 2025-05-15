@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android) // Заменяем прямое id на alias
-    kotlin("kapt") // Оставляем для обработки аннотаций
+    alias(libs.plugins.hilt.android)
+    id("org.jetbrains.kotlin.kapt")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
+
 }
 
 android {
@@ -18,6 +19,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true"
+                )
+            }
+        }
     }
 
     buildTypes {
@@ -39,31 +49,26 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
+    }
 }
 
 dependencies {
-    //
-    implementation("androidx.datastore:datastore-preferences:1.1.4")
-    implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.7")
-    implementation("androidx.room:room-runtime:2.7.0")
-    implementation("androidx.room:room-ktx:2.7.0")
-    kapt("androidx.room:room-compiler:2.7.0")
+    implementation("androidx.compose.compiler:compiler:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-
-    // Для Compose (если нужно)
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    constraints{
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0"){
-            because("kotlin-stdlib-jdk7 is now a part of stdlib")
-        }
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"){
-            because("kotlin-stdlib-jdk7 is now a part of stdlib")
-        }
-    }
-
+    // Compose
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -72,6 +77,10 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    kapt(libs.androidx.room.compiler)
+
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.34.0")
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

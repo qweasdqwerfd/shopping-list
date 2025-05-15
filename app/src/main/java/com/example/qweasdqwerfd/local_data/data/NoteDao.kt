@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.data
+package com.example.qweasdqwerfd.local_data.data
 
 import androidx.room.Dao
 import androidx.room.Delete

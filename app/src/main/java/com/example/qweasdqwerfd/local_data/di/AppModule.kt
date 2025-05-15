@@ -1,21 +1,22 @@
-package com.example.qweasdqwerfd.di
+package com.example.qweasdqwerfd.local_data.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.qweasdqwerfd.data.AddItemRepoImpl
-import com.example.qweasdqwerfd.data.AddItemRepository
-import com.example.qweasdqwerfd.data.MainDb
-import com.example.qweasdqwerfd.data.NoteRepoImpl
-import com.example.qweasdqwerfd.data.NoteRepository
-import com.example.qweasdqwerfd.data.ShoppingListRepoImpl
-import com.example.qweasdqwerfd.data.ShoppingListRepository
+import com.example.qweasdqwerfd.local_data.data.AddItemRepoImpl
+import com.example.qweasdqwerfd.local_data.data.AddItemRepository
+import com.example.qweasdqwerfd.local_data.data.MainDb
+import com.example.qweasdqwerfd.local_data.data.NoteRepoImpl
+import com.example.qweasdqwerfd.local_data.data.NoteRepository
+import com.example.qweasdqwerfd.local_data.data.ShoppingListRepoImpl
+import com.example.qweasdqwerfd.local_data.data.ShoppingListRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn()
+@InstallIn(SingletonComponent::class)
 object AppModule {
     @Provides
     @Singleton
