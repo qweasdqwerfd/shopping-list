@@ -1,12 +1,11 @@
 package com.example.qweasdqwerfd.ui_components
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.qweasdqwerfd.ui_components.screens.AboutScreen
-import com.example.qweasdqwerfd.ui_components.screens.ListScreen
+import com.example.qweasdqwerfd.ui_components.screens.shopping_list.ShoppingListScreen
 import com.example.qweasdqwerfd.ui_components.screens.NoteScreen
 import com.example.qweasdqwerfd.ui_components.screens.SettingScreen
 
@@ -19,7 +18,7 @@ fun NavGraph(
         startDestination = "list"
     )  {
         composable("list") {
-            ListScreen()
+            ShoppingListScreen()
         }
         composable("note") {
             NoteScreen()

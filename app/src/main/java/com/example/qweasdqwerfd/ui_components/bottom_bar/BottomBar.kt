@@ -37,6 +37,11 @@ fun BottomBar(navController: NavController) {
 
         listItems.forEach { item ->
             NavigationBarItem(
+                selected = currentRoute == item.route,
+                onClick = {
+                    navController.navigate(item.route)
+                },
+
                 icon = {
                     Icon(
                         painter = painterResource(id = item.iconId),
@@ -46,10 +51,7 @@ fun BottomBar(navController: NavController) {
                 },
                 label = { Text(item.title) },
 
-                selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route)
-                },
+
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.primary,
                     selectedTextColor = MaterialTheme.colorScheme.primary,
