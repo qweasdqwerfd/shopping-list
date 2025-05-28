@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui_components.screens.shopping_list
+package com.example.qweasdqwerfd.presentation.components.screens.shopping_list
 
 import com.example.qweasdqwerfd.local_data.data.ShoppingListItem
 

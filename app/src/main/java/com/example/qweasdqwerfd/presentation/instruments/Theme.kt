@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui.instruments
+package com.example.qweasdqwerfd.presentation.instruments
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

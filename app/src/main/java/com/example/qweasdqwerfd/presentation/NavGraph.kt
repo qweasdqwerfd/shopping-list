@@ -1,13 +1,13 @@
-package com.example.qweasdqwerfd.ui_components
+package com.example.qweasdqwerfd.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.qweasdqwerfd.ui_components.screens.AboutScreen
-import com.example.qweasdqwerfd.ui_components.screens.shopping_list.ShoppingListScreen
-import com.example.qweasdqwerfd.ui_components.screens.NoteScreen
-import com.example.qweasdqwerfd.ui_components.screens.SettingScreen
+import com.example.qweasdqwerfd.presentation.components.screens.AboutScreen
+import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.ShoppingListScreen
+import com.example.qweasdqwerfd.presentation.components.screens.NoteScreen
+import com.example.qweasdqwerfd.presentation.components.screens.SettingScreen
 
 @Composable
 fun NavGraph(

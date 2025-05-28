@@ -1,13 +1,16 @@
-package com.example.qweasdqwerfd.ui_components.screens.shopping_list
+package com.example.qweasdqwerfd.presentation.components.screens.shopping_list
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.qweasdqwerfd.UIEvent
 import com.example.qweasdqwerfd.dialog.DialogController
 import com.example.qweasdqwerfd.dialog.DialogEvent
 import com.example.qweasdqwerfd.local_data.data.ShoppingListItem
 import com.example.qweasdqwerfd.local_data.data.ShoppingListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,6 +18,11 @@ import javax.inject.Inject
 class ShoppingListViewModel @Inject constructor(
     private val repository: ShoppingListRepository,
 ) : ViewModel(), DialogController {
+
+    private val list = repository.getAllItems()
+
+    private val _uiEvent = Channel<UIEvent>()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
     private var listItem: ShoppingListItem? = null
 
@@ -48,30 +56,55 @@ class ShoppingListViewModel @Inject constructor(
             }
 
             is ShoppingListEvent.OnItemClick -> {
-
+                sendUIEvent(UIEvent.Navigate(event.route))
             }
 
             is ShoppingListEvent.OnShowEditDialog -> {
+                openDialog.value = true
+                dialogTitle.value = "List name:"
                 listItem = event.item
+                editableText.value = listItem?.name ?: ""
+
+                showEditableText.value = true
+
             }
 
             is ShoppingListEvent.OnShowDeleteDialog -> {
+                openDialog.value = true
+                dialogTitle.value = "Delete this item?"
+                listItem = event.item
 
+                showEditableText.value = false
             }
         }
     }
 
-    fun onDialogEvent(event: DialogEvent) {
+    override fun onDialogEvent(event: DialogEvent) {
         when (event) {
             is DialogEvent.OnCancel -> {
-
+                openDialog.value = false
             }
+
             is DialogEvent.OnConfirm -> {
-
+                if (showEditableText.value == true) {
+                    onEvent(ShoppingListEvent.OnItemSave)
+                } else {
+                    viewModelScope.launch {
+                        repository.deleteItem(listItem!!)
+                    }
+                }
+                openDialog.value = false
             }
+
             is DialogEvent.OnTextChange -> {
-
+                editableText.value = event.text
             }
+        }
+    }
+
+    private fun sendUIEvent(event: UIEvent) {
+        viewModelScope.launch {
+            _uiEvent.send(event)
         }
     }
 

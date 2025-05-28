@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.custom_components.floating_action_button
+package com.example.qweasdqwerfd.presentation.custom_components.floating_action_button
 
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon

@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui_components
+package com.example.qweasdqwerfd.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.qweasdqwerfd.custom_components.floating_action_button.FloatActionBar
-import com.example.qweasdqwerfd.custom_components.status_bar.StatusBar
-import com.example.qweasdqwerfd.ui_components.bottom_bar.BottomBar
+import com.example.qweasdqwerfd.presentation.custom_components.floating_action_button.FloatActionBar
+import com.example.qweasdqwerfd.presentation.custom_components.status_bar.StatusBar
+import com.example.qweasdqwerfd.presentation.components.bottom_bar.BottomBar
 
 @Composable
 fun MainScreen() {

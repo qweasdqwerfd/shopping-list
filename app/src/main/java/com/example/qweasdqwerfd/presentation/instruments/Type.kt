@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui.instruments
+package com.example.qweasdqwerfd.presentation.instruments
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.custom_components.status_bar
+package com.example.qweasdqwerfd.presentation.custom_components.status_bar
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

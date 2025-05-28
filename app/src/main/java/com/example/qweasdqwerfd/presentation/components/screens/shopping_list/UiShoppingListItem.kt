@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui_components.screens.shopping_list
+package com.example.qweasdqwerfd.presentation.components.screens.shopping_list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.qweasdqwerfd.R
-import com.example.qweasdqwerfd.ui.instruments.Red
+import com.example.qweasdqwerfd.presentation.instruments.Red
 
 @Preview(showBackground = true)
 @Composable

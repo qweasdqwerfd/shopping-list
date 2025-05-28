@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui_components.bottom_bar
+package com.example.qweasdqwerfd.presentation.components.bottom_bar
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.BottomAppBar
@@ -14,7 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun BottomBar(navController: NavController) {

@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.ui_components.bottom_bar
+package com.example.qweasdqwerfd.presentation.components.bottom_bar
 
 import com.example.qweasdqwerfd.R
 
