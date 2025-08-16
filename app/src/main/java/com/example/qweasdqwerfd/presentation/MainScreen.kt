@@ -20,11 +20,9 @@ fun MainScreen() {
     Scaffold(
         bottomBar = { BottomBar(navController) },
         floatingActionButtonPosition = FabPosition.Center,
-
         floatingActionButton = {
             FloatActionBar()
         },
-
 
         ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {

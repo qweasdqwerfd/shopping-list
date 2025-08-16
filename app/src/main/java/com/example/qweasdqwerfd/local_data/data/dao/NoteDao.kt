@@ -1,11 +1,12 @@
-package com.example.qweasdqwerfd.local_data.data
+package com.example.qweasdqwerfd.local_data.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
+import com.example.qweasdqwerfd.local_data.data.model.AddItem
+import com.example.qweasdqwerfd.local_data.data.model.NoteItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao

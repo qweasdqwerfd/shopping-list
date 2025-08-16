@@ -2,13 +2,13 @@ package com.example.qweasdqwerfd.local_data.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.qweasdqwerfd.local_data.data.AddItemRepoImpl
-import com.example.qweasdqwerfd.local_data.data.AddItemRepository
+import com.example.qweasdqwerfd.local_data.data.repository.AddItemRepoImpl
+import com.example.qweasdqwerfd.local_data.data.repository.AddItemRepository
 import com.example.qweasdqwerfd.local_data.data.MainDb
-import com.example.qweasdqwerfd.local_data.data.NoteRepoImpl
-import com.example.qweasdqwerfd.local_data.data.NoteRepository
-import com.example.qweasdqwerfd.local_data.data.ShoppingListRepoImpl
-import com.example.qweasdqwerfd.local_data.data.ShoppingListRepository
+import com.example.qweasdqwerfd.local_data.data.repository.NoteRepoImpl
+import com.example.qweasdqwerfd.local_data.data.repository.NoteRepository
+import com.example.qweasdqwerfd.local_data.data.repository.ShoppingListRepoImpl
+import com.example.qweasdqwerfd.local_data.data.repository.ShoppingListRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

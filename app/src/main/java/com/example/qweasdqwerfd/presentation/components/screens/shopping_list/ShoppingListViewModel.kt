@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.qweasdqwerfd.UIEvent
 import com.example.qweasdqwerfd.dialog.DialogController
 import com.example.qweasdqwerfd.dialog.DialogEvent
-import com.example.qweasdqwerfd.local_data.data.ShoppingListItem
-import com.example.qweasdqwerfd.local_data.data.ShoppingListRepository
+import com.example.qweasdqwerfd.local_data.data.model.ShoppingListItem
+import com.example.qweasdqwerfd.local_data.data.repository.ShoppingListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow

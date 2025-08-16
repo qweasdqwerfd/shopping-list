@@ -7,8 +7,8 @@ import com.example.qweasdqwerfd.dialog.MainDialog
 
 @Composable
 fun ShoppingListScreen(
-    viewModel: ShoppingListViewModel = hiltViewModel()
+    viewModel: ShoppingListViewModel
 ) {
     Text("ListScreen")
-    MainDialog(viewModel)
+//    MainDialog(viewModel)
 }

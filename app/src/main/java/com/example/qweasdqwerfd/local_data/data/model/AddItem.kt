@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.local_data.data
+package com.example.qweasdqwerfd.local_data.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
