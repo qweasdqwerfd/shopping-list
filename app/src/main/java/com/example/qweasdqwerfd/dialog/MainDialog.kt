@@ -29,7 +29,7 @@ import androidx.compose.ui.window.Dialog
 
 @Composable
 fun MainDialog(
-    dialogController: DialogController,
+    dialogController: DialogController
 ) {
     if (dialogController.openDialog.value) {
         Dialog(onDismissRequest = {

@@ -4,11 +4,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.qweasdqwerfd.dialog.MainDialog
+import com.example.qweasdqwerfd.view_model.ShoppingListViewModel
 
 @Composable
 fun ShoppingListScreen(
-    viewModel: ShoppingListViewModel
+    viewModel: ShoppingListViewModel = hiltViewModel()
 ) {
-    Text("ListScreen")
+
+//    Text("ListScreen")
 //    MainDialog(viewModel)
 }

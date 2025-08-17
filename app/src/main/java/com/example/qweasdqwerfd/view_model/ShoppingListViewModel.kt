@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.presentation.components.screens.shopping_list
+package com.example.qweasdqwerfd.view_model
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -8,6 +8,7 @@ import com.example.qweasdqwerfd.dialog.DialogController
 import com.example.qweasdqwerfd.dialog.DialogEvent
 import com.example.qweasdqwerfd.local_data.data.model.ShoppingListItem
 import com.example.qweasdqwerfd.local_data.data.repository.ShoppingListRepository
+import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.ShoppingListEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -19,7 +20,7 @@ class ShoppingListViewModel @Inject constructor(
     private val repository: ShoppingListRepository,
 ) : ViewModel(), DialogController {
 
-    private val list = repository.getAllItems()
+    val list = repository.getAllItems()
 
     private val _uiEvent = Channel<UIEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
@@ -47,7 +48,7 @@ class ShoppingListViewModel @Inject constructor(
                         ShoppingListItem(
                             id = listItem?.id,
                             name = editableText.value,
-                            time = "TODO()",
+                            time = "",
                             allItemsCount = listItem?.allItemsCount ?: 0,
                             allSelectedItemsCount = listItem?.allItemsCount ?: 0
                         )
@@ -86,11 +87,11 @@ class ShoppingListViewModel @Inject constructor(
             }
 
             is DialogEvent.OnConfirm -> {
-                if (showEditableText.value == true) {
+                if (showEditableText.value) {
                     onEvent(ShoppingListEvent.OnItemSave)
                 } else {
                     viewModelScope.launch {
-                        repository.deleteItem(listItem!!)
+                        listItem?.let { repository.deleteItem(it) }
                     }
                 }
                 openDialog.value = false

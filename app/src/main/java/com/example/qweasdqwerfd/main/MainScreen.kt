@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.presentation
+package com.example.qweasdqwerfd.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
