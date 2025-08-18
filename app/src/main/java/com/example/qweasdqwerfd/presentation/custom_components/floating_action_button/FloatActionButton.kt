@@ -9,9 +9,11 @@ import androidx.compose.ui.res.painterResource
 import com.example.qweasdqwerfd.R
 
 @Composable
-fun FloatActionBar() {
+fun FloatActionBar(
+    onClick: () -> Unit
+) {
     FloatingActionButton(
-        onClick = {},
+        onClick = { onClick() },
         containerColor = MaterialTheme.colorScheme.primary,
         shape = MaterialTheme.shapes.extraLarge
     ) {

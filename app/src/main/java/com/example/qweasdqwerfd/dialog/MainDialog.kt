@@ -17,12 +17,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -58,7 +58,7 @@ fun MainDialog(
                     if (dialogController.showEditableText.value) {
                         TextField(
                             value = dialogController.editableText.value,
-                            onValueChange = {text ->
+                            onValueChange = { text ->
                                 dialogController.onDialogEvent(DialogEvent.OnTextChange(text))
                             },
                             label = {
@@ -66,7 +66,7 @@ fun MainDialog(
                             },
                             singleLine = true,
 
-                        )
+                            )
                     }
 
                     Spacer(modifier = Modifier.height(24.dp))
@@ -82,13 +82,18 @@ fun MainDialog(
                         }
                         Spacer(modifier = Modifier.width(8.dp))
                         Button(
+                            modifier = Modifier.width(70.dp),
                             onClick = {
                                 dialogController.onDialogEvent(DialogEvent.OnConfirm)
                             },
-                            shape = RoundedCornerShape(12.dp),
+                            shape = RoundedCornerShape(10.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3F51B5))
                         ) {
-                            Text("ОК", color = Color.White)
+                            Text(
+                                "ОК",
+                                color = Color.White,
+
+                                )
                         }
                     }
                 }

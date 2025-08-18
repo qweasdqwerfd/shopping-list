@@ -3,7 +3,7 @@ package com.example.qweasdqwerfd.view_model
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.qweasdqwerfd.MainScreenEvent
+import com.example.qweasdqwerfd.main.MainScreenEvent
 import com.example.qweasdqwerfd.dialog.DialogController
 import com.example.qweasdqwerfd.dialog.DialogEvent
 import com.example.qweasdqwerfd.local_data.data.model.ShoppingListItem
@@ -34,6 +34,7 @@ class MainScreenViewModel @Inject constructor(
     fun onEvent(event: MainScreenEvent) {
         when (event) {
             is MainScreenEvent.OnItemSave -> {
+                if (editableText.value.isEmpty()) return
                 viewModelScope.launch {
                     repository.insertItem(
                         ShoppingListItem(
@@ -56,13 +57,16 @@ class MainScreenViewModel @Inject constructor(
     override fun onDialogEvent(event: DialogEvent) {
         when (event) {
             is DialogEvent.OnTextChange -> {
-
+                editableText.value = event.text
             }
             is DialogEvent.OnCancel -> {
-
+                openDialog.value = false
+                editableText.value = ""
             }
             is DialogEvent.OnConfirm -> {
-
+                onEvent(MainScreenEvent.OnItemSave)
+                openDialog.value = false
+                editableText.value = ""
             }
         }
     }

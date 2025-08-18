@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd
+package com.example.qweasdqwerfd.presentation.navigation
 
 sealed class UIEvent {
     object PopBackStack: UIEvent()

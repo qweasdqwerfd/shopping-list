@@ -1,6 +1,7 @@
 package com.example.qweasdqwerfd.presentation.components.screens.shopping_list
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,15 +19,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.qweasdqwerfd.R
+import com.example.qweasdqwerfd.local_data.data.model.ShoppingListItem
 import com.example.qweasdqwerfd.presentation.instruments.Red
+import com.example.qweasdqwerfd.presentation.navigation.Screen
 
-@Preview(showBackground = true)
 @Composable
-fun UiShoppingListItem() {
+fun UiShoppingListItem(
+    item: ShoppingListItem,
+    onEvent: (ShoppingListEvent) -> Unit
+) {
     ConstraintLayout(
         modifier = Modifier.padding(
             start = 3.dp,
@@ -42,6 +46,9 @@ fun UiShoppingListItem() {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
+                }
+                .clickable {
+                    onEvent(ShoppingListEvent.OnItemClick(Screen.ADD_ITEM.route))
                 },
 
             ) {
@@ -51,12 +58,12 @@ fun UiShoppingListItem() {
                     .padding(8.dp)
             ) {
                 Text(
-                    "List 1",
+                    item.name,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    "12/12/2023 13.00",
+                    item.time,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -64,12 +71,15 @@ fun UiShoppingListItem() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 5.dp),
-                    color = Color.Black
+                    color = Color.Black,
+                    progress = 0.5f
                 )
             }
         }
         IconButton(
-            onClick = {},
+            onClick = {
+                onEvent(ShoppingListEvent.OnShowDeleteDialog(item))
+            },
             modifier = Modifier
                 .constrainAs(deleteButton) {
                     top.linkTo(card.top)
@@ -92,7 +102,9 @@ fun UiShoppingListItem() {
         }
 
         IconButton(
-            onClick = {},
+            onClick = {
+                onEvent(ShoppingListEvent.OnShowEditDialog(item))
+            },
             modifier = Modifier
                 .constrainAs(editButton) {
                     top.linkTo(deleteButton.top)
@@ -125,7 +137,7 @@ fun UiShoppingListItem() {
                 .padding(end = 5.dp)
         ) {
             Text(
-                text = "15/5",
+                text = "${item.allItemsCount}/${item.allSelectedItemsCount}",
                 color = Color.White,
                 modifier = Modifier
                     .background(Red)

@@ -55,6 +55,10 @@ android {
 }
 
 dependencies {
+    //fix bug CreationExtras must have a value by `SAVED_STATE_REGISTRY_OWNER_KEY`
+    implementation("androidx.navigation:navigation-compose:2.9.3")
+
+    //additions
     implementation("androidx.compose.compiler:compiler:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 

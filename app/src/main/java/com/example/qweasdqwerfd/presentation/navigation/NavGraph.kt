@@ -1,13 +1,13 @@
-package com.example.qweasdqwerfd.main
+package com.example.qweasdqwerfd.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.qweasdqwerfd.presentation.components.screens.AboutScreen
-import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.ShoppingListScreen
 import com.example.qweasdqwerfd.presentation.components.screens.NoteScreen
 import com.example.qweasdqwerfd.presentation.components.screens.SettingScreen
+import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.ShoppingListScreen
 
 @Composable
 fun NavGraph(
@@ -15,19 +15,19 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = "list"
-    )  {
-        composable("list") {
+        startDestination = Screen.LIST.route
+    ) {
+        composable(Screen.LIST.route) {
             ShoppingListScreen()
         }
 
-        composable("note") {
+        composable(Screen.NOTE.route) {
             NoteScreen()
         }
-        composable("about") {
+        composable(Screen.ABOUT.route) {
             AboutScreen()
         }
-        composable("setting") {
+        composable(Screen.SETTING.route) {
             SettingScreen()
         }
     }
