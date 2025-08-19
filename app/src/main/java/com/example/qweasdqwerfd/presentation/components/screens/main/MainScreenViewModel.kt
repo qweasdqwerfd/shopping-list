@@ -1,14 +1,12 @@
-package com.example.qweasdqwerfd.view_model
+package com.example.qweasdqwerfd.presentation.components.screens.main
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.qweasdqwerfd.main.MainScreenEvent
-import com.example.qweasdqwerfd.dialog.DialogController
-import com.example.qweasdqwerfd.dialog.DialogEvent
+import com.example.qweasdqwerfd.presentation.custom_components.dialog.DialogController
+import com.example.qweasdqwerfd.presentation.custom_components.dialog.DialogEvent
 import com.example.qweasdqwerfd.local_data.data.model.ShoppingListItem
 import com.example.qweasdqwerfd.local_data.data.repository.ShoppingListRepository
-import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.ShoppingListEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -47,6 +45,7 @@ class MainScreenViewModel @Inject constructor(
                     )
                 }
             }
+
             is MainScreenEvent.OnShowEditDialog -> {
                 openDialog.value = true
             }
@@ -59,10 +58,12 @@ class MainScreenViewModel @Inject constructor(
             is DialogEvent.OnTextChange -> {
                 editableText.value = event.text
             }
+
             is DialogEvent.OnCancel -> {
                 openDialog.value = false
                 editableText.value = ""
             }
+
             is DialogEvent.OnConfirm -> {
                 onEvent(MainScreenEvent.OnItemSave)
                 openDialog.value = false

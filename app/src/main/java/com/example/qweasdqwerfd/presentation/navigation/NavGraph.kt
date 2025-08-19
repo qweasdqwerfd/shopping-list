@@ -11,14 +11,17 @@ import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.Sh
 
 @Composable
 fun NavGraph(
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    onNavigate: (String) -> Unit
 ) {
     NavHost(
         navController = navHostController,
         startDestination = Screen.LIST.route
     ) {
         composable(Screen.LIST.route) {
-            ShoppingListScreen()
+            ShoppingListScreen { route ->
+                onNavigate(route)
+            }
         }
 
         composable(Screen.NOTE.route) {

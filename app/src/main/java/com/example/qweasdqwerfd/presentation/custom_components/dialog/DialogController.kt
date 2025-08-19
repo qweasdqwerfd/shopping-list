@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.dialog
+package com.example.qweasdqwerfd.presentation.custom_components.dialog
 
 import androidx.compose.runtime.MutableState
 

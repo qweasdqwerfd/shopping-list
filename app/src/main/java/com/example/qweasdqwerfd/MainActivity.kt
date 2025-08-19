@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.qweasdqwerfd.main.MainScreen
 import com.example.qweasdqwerfd.presentation.instruments.ShoppingListTheme
 import com.example.qweasdqwerfd.presentation.navigation.MainNavGraph
 import dagger.hilt.android.AndroidEntryPoint

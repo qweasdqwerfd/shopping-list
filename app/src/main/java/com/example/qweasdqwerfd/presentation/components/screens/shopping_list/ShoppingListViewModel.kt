@@ -1,14 +1,13 @@
-package com.example.qweasdqwerfd.view_model
+package com.example.qweasdqwerfd.presentation.components.screens.shopping_list
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.qweasdqwerfd.presentation.navigation.UIEvent
-import com.example.qweasdqwerfd.dialog.DialogController
-import com.example.qweasdqwerfd.dialog.DialogEvent
+import com.example.qweasdqwerfd.presentation.custom_components.dialog.DialogController
+import com.example.qweasdqwerfd.presentation.custom_components.dialog.DialogEvent
 import com.example.qweasdqwerfd.local_data.data.model.ShoppingListItem
 import com.example.qweasdqwerfd.local_data.data.repository.ShoppingListRepository
-import com.example.qweasdqwerfd.presentation.components.screens.shopping_list.ShoppingListEvent
+import com.example.qweasdqwerfd.presentation.navigation.UIEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow

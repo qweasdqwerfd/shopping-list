@@ -48,7 +48,11 @@ fun UiShoppingListItem(
                     end.linkTo(parent.end)
                 }
                 .clickable {
-                    onEvent(ShoppingListEvent.OnItemClick(Screen.ADD_ITEM.route))
+                    onEvent(
+                        ShoppingListEvent.OnItemClick(
+                            Screen.ADD_ITEM.route + "/${item.id}"
+                        )
+                    )
                 },
 
             ) {

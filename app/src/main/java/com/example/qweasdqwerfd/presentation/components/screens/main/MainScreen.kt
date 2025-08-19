@@ -1,4 +1,4 @@
-package com.example.qweasdqwerfd.main
+package com.example.qweasdqwerfd.presentation.components.screens.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -9,13 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.qweasdqwerfd.main.MainScreenEvent
-import com.example.qweasdqwerfd.dialog.MainDialog
+import com.example.qweasdqwerfd.presentation.custom_components.dialog.MainDialog
 import com.example.qweasdqwerfd.presentation.components.bottom_bar.BottomBar
 import com.example.qweasdqwerfd.presentation.custom_components.floating_action_button.FloatActionBar
 import com.example.qweasdqwerfd.presentation.custom_components.status_bar.StatusBar
 import com.example.qweasdqwerfd.presentation.navigation.NavGraph
-import com.example.qweasdqwerfd.view_model.MainScreenViewModel
 
 @Composable
 fun MainScreen(
@@ -36,7 +34,9 @@ fun MainScreen(
 
         ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            NavGraph(navController)
+            NavGraph(navController) { route ->
+                mainNavHostController.navigate(route)
+            }
             MainDialog(viewModel)
         }
     }

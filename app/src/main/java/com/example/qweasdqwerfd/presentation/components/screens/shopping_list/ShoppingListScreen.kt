@@ -12,15 +12,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.qweasdqwerfd.dialog.MainDialog
-import com.example.qweasdqwerfd.view_model.ShoppingListViewModel
+import com.example.qweasdqwerfd.presentation.custom_components.dialog.MainDialog
+import com.example.qweasdqwerfd.presentation.navigation.UIEvent
 
 @Composable
 fun ShoppingListScreen(
-    viewModel: ShoppingListViewModel = hiltViewModel()
+    viewModel: ShoppingListViewModel = hiltViewModel(),
+    onNavigate: (String) -> Unit
 ) {
     val itemsList = viewModel.list.collectAsState(initial = emptyList())
-    LaunchedEffect() { }
+    LaunchedEffect(key1 = true) {
+        viewModel.uiEvent.collect { it ->
+            when (it) {
+                is UIEvent.Navigate -> {
+                    onNavigate(it.route)
+                }
+
+                else -> {}
+            }
+        }
+    }
 
     LazyColumn(
         modifier = Modifier
